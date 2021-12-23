@@ -1,0 +1,28 @@
+img{
+    width: 310px;
+}
+.cards{
+    margin: 0 auto;
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    
+}
+h3{
+    width: 300px;
+}
+
+button{
+    display: block;
+}
+.block:first-child{
+    padding-bottom: 50px;
+}
+.item{
+    display: flex;
+    justify-content: space-around;
+}
+
+.item:nth-child(4) > p:first-child{
+    width: 180px;
+}
