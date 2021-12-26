@@ -18,11 +18,14 @@ button{
 .block:first-child{
     padding-bottom: 50px;
 }
-.item{
-    display: flex;
-    justify-content: space-around;
-}
+/* .item{
+   
+    
+} */
 
 .item:nth-child(4) > p:first-child{
     width: 180px;
+}
+.title{
+    width: 360px;
 }
