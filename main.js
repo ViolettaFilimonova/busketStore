@@ -47,12 +47,16 @@ function product(title, img, price){
     this.title = title
     this.img = img
     this.price = price
+    this.quantity = 1
 }
 let product1 = new product('DYSON supersonic™ - фен', "/dyson.jpg", 40000)
 let product2 = new product('DYSON supersonic™ - выпрямитель для волос', "/dyson2.jpg", 39000)
-let products = [product1, product2]
+let product4 = new product('DYSON supersonic™ - пылесос', "/dyson4.jpg", 62900)
+let product3 = new product('DYSON supersonic™ - очиститель воздуха', "/dyson3.jpg", 55000)
+let products = [product1, product2, product3, product4]
+
 let total = document.querySelector(".sum")
-console.log(products)
+
 let cards = document.querySelector(".cards")
 
 for (let i = 0; i < products.length; i++) {
@@ -70,7 +74,7 @@ for (let i = 0; i < products.length; i++) {
     price.classList.add('price')
     price.innerText = products[i].price + '\u20bd'
     card.append(price )
-    console.log(price)
+    // console.log(price)
     let button = document.createElement('button')
     button.innerText = 'Добавить в карзину'
     button.setAttribute('id', 'btn_' + i)
@@ -78,19 +82,36 @@ for (let i = 0; i < products.length; i++) {
 }
 let buttons = document.querySelectorAll('button')
 for (let i = 0; i < buttons.length; i++) {
+
+    let itemProduct = document.createElement('div')
+    itemProduct.classList.add('item_product')
+    let name = document.createElement('p')
+    name.classList.add('name')
+    let price = document.createElement('p')
+    price.classList.add('price')
+    let quantity = document.createElement('p')
+    quantity.classList.add('quantity')
+
     buttons[i].onclick = function (e){
         let button = e.target;
         let mass = button.id.split('_');
         let id = mass[1]
         let productPrint = products[id]
         let item = document.querySelector('.item')
-        let p = document.createElement('p')
-        p.textContent = productPrint.title + productPrint.price + '\u20bd'
-        item.append(p)
+        name.textContent = productPrint.title 
+        
+        price.textContent =  productPrint.price + '\u20bd'
+        
+    
+
+        quantity.textContent = productPrint.quantity++
+        itemProduct.append(name, quantity, price)
+        item.append(itemProduct)
         // console.log(id)
        sum += productPrint.price
-       total.textContent = 'Сумма вашей покуупки: ' + sum + '\u20bd'
+       total.textContent = 'Сумма вашей покупки: ' + sum + '\u20bd'
        console.log(sum)
+      
     }
 }
 
